@@ -15,6 +15,7 @@
 		Empresa ${ empresa }, cadastrada com sucesso!
 	</c:if>
 	</br>
+	<h1>Bem vindo,  ${usuarioLogado.login}</h1>
 	<h1>Lista de Empresas</h1>
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
