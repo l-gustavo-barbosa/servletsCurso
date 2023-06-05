@@ -1,4 +1,4 @@
-package Acao;
+package acao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Modelo.Banco;
 import Modelo.Empresa;
 
-public class AlteraEmpresas {
+public class AlteraEmpresas implements Acao{
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("Alterando empresa");

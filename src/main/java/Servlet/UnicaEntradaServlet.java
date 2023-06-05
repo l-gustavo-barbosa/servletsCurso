@@ -8,47 +8,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Acao.AlteraEmpresas;
-import Acao.ListaEmpresas;
-import Acao.MostraEmpresa;
-import Acao.NovaEmpresa;
-import Acao.RemoveEmpresas;
+import acao.Acao;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String paramAcao = req.getParameter("acao");
+		String nomeClasse = "acao." + paramAcao;
 		String nome = null;
-		if(paramAcao.equals("ListaEmpresas")) {
-			ListaEmpresas acao = new ListaEmpresas();
-			nome = acao.executa(req, resp);
-				
-		} else if(paramAcao.equals("RemoveEmpresas")) {
-			RemoveEmpresas acao = new RemoveEmpresas();
-			nome = acao.executa(req, resp);
-			
-		}else if(paramAcao.equals("AlteraEmpresa")) {
-			AlteraEmpresas acao = new AlteraEmpresas();
-			nome = acao.executa(req, resp);
-		} else if(paramAcao.equals("MostraEmpresa")) {
-			MostraEmpresa acao = new MostraEmpresa();
-			nome = acao.executa(req, resp);
-		}else if(paramAcao.equals("NovaEmpresa")) {
-			NovaEmpresa acao = new NovaEmpresa();
-			nome = acao.executa(req, resp);
-			
+		
+		try {
+			Class classe = Class.forName(nomeClasse);//carrega a classe com o nome 
+			Acao InterfaceAcao = (Acao) classe.newInstance();;
+			nome = InterfaceAcao.executa(req, resp);
+
+			String[] tipoEndereco = nome.split(":");
+			if(tipoEndereco[0].equals("forward")) {
+				RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/" + tipoEndereco[1]);
+				rd.forward(req, resp);
+			} else {
+				resp.sendRedirect(tipoEndereco[1]);
+			}
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			throw new ServletException(e);
 		}
 		
-		
-		String[] tipoEndereco = nome.split(":");
-		if(tipoEndereco[0].equals("forward")) {
-			RequestDispatcher rd = req.getRequestDispatcher(tipoEndereco[1]);
-			rd.forward(req, resp);
-		} else {
-			resp.sendRedirect(tipoEndereco[1]);
-		}
+
 
 	}
 

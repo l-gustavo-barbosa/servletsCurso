@@ -1,13 +1,11 @@
-package Acao;
+package acao;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Modelo.Banco;
 import Modelo.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao{
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String novaEmpresa = request.getParameter("nome");
     	String paramDataAbertura = request.getParameter("data");
@@ -41,7 +39,7 @@ public class NovaEmpresa {
     	
     	//RequestDispatcher rd = req.getRequestDispatcher("/listaEmpresas");
     	request.setAttribute("empresa", empresa.getNome());
-    	return "forward:entrada?acao=ListaEmpresas";
+    	return "redirect:entrada?acao=ListaEmpresas";
 
 	}
 }

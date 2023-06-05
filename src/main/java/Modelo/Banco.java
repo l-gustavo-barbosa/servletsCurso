@@ -8,6 +8,8 @@ public class Banco {
 	private static List<Empresa> lista = new ArrayList<>();;
 	private static Integer chaveSequencial = 1;
 	
+	
+	
 	static {
 		Empresa empresa = new Empresa();
 		empresa.setNome("Alura");
