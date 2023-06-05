@@ -11,11 +11,13 @@ import Modelo.Banco;
 import Modelo.Empresa;
 
 public class RemoveEmpresas {
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		Banco banco = new Banco();
 		banco.removeEmpresa(id);
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		
+		return "redirect:entrada?acao=ListaEmpresas";
+		
 	}
 }

@@ -16,7 +16,7 @@ import Modelo.Banco;
 import Modelo.Empresa;
 
 public class NovaEmpresa {
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String novaEmpresa = request.getParameter("nome");
     	String paramDataAbertura = request.getParameter("data");
     	
@@ -41,7 +41,7 @@ public class NovaEmpresa {
     	
     	//RequestDispatcher rd = req.getRequestDispatcher("/listaEmpresas");
     	request.setAttribute("empresa", empresa.getNome());
-    	response.sendRedirect("entrada?acao=ListaEmpresas");
+    	return "forward:entrada?acao=ListaEmpresas";
 
 	}
 }
