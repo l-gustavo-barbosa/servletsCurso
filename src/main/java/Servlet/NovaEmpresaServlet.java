@@ -18,7 +18,7 @@ import Modelo.Empresa;
 /**
  * Servlet implementation class NovaEmpresaServlet
  */
-@WebServlet("/novaEmpresa")
+//@WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

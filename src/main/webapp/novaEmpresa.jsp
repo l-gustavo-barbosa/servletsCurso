@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:url value="/novaEmpresa" var = "urlNovaEmpresa"/>
+<c:url value="/entrada" var = "urlNovaEmpresa"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,7 @@
 		<input type="text" name="nome" />
 		<label for="data">Data</label> 
 		<input type="text" name="data" /> 
+		<input type="hidden" name="acao" value="NovaEmpresa"/>
 		<input type="submit"/>
 	</form>
 </body>

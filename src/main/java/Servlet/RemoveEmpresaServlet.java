@@ -13,7 +13,7 @@ import Modelo.Banco;
 /**
  * Servlet implementation class RemoveEmpresaServlet
  */
-@WebServlet("/removeEmpresa")
+//@WebServlet("/removeEmpresa")
 public class RemoveEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
