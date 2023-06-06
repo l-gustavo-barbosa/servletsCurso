@@ -11,7 +11,7 @@ public class LoginForm implements Acao {
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		return "forward:LoginForm.jsp";
+		return "forward:/LoginForm.jsp";
 	}
 
 }

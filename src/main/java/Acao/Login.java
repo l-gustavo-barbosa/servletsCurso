@@ -25,7 +25,7 @@ public class Login implements Acao {
 			sessao.setAttribute("usuarioLogado", usuario);
 			return "redirect:entrada?acao=ListaEmpresas";
 		} else {
-			return "redirect:LoginForm.jsp";
+			return "forward:LoginForm.jsp";
 		}
 		
 		
